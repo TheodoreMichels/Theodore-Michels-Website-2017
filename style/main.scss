@@ -49,30 +49,78 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .content-container {
     position: relative;
-    padding: 100px 0 40px;
+    padding: 100px 40px 40px;
+    max-width: 320px;
+    margin: 0 auto;
+    
 }
 
+#portrait-box{
+    display: inline-block;
+    position: relative;
+    
+    &:hover{
+        #portrait{
+            opacity: 0.0;
+            transition: .3s all;
+        }
+        #email-button{
+            opacity: 0.9;
+            transform: scale(0.5, 0.5);
+        }
+        
+    }
+}
 img#portrait {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     box-shadow: $circ-shadow;
+    
+    transition: .3s all;
+}
+#email-button {
+    opacity: 0.0;
+    
+    position: absolute;
+    top: 0;
+    
+    width: 150px;
+    height: 150px;
+    
+    font-size: 0px;
+    background-color: white;
+    border-radius: 100%;
+    
+    transition: .3s all;
+    i{
+        @include center-in-parent;
+        color: $accent;
+        font-size: 60px;
+    }
 }
 
 .description {
-    text-align: justify;
+    text-align: left;
     font-size: 14px;
-    width: 360px;
-    margin: 30px auto;
+    width: 100%;
+    p{
+        margin: 40px 0;
+    }
     span {
         font-weight: 700;
         color: white;
     }
+    .email{
+        text-align: center;
+        font-size: 16px;
+    }
+
 }
 
 header {
@@ -100,47 +148,42 @@ header {
 #social-container {
     margin: 20px 0;
     width: 100%;
+    font-size: 0;
+    
+    text-align: center;
+    
+    a{
+        display: inline-block;
+        width: 30%;
+        &:nth-child(1){
+            text-align: left;
+            width: 20%;
+        }
+        &:nth-child(4){
+            text-align: right;
+            width: 20%;
+        }
+    }
+
     i {
         font-size: 35px;
-        padding: 10px;
+        //padding: 10px;
         transition: .2s all;
         &:hover {
             color: $accent;
-            transform: scale(1.2, 1.2);
+            //transform: scale(1.2, 1.2);
             transition: .3s all;
         }
     }
 }
 
-#email-button {
-    position: relative;
-    color: black;
-    display: inline-block;
-    font-size: 25px;
-    text-align: center;
-    padding: 20px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: $off-white;
-    box-shadow: $circ-shadow;
-    transition: .1s all;
-    i {
-        @include center-in-parent;
-    }
-    &:hover {
-        background-color: $accent;
-        transform: scale(1.1, 1.1);
-        transition: .3s all;
-    }
-}
+
 
 /**** Media Queries ****/
 
 @media(max-width: 600px) {
     .description {
         font-size: 12px;
-        width: 280px;
     }
     .content-container {
         padding-top: 40px;
